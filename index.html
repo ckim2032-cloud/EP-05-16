@@ -16,11 +16,10 @@
     }
     #firstTimeModal {
       position: fixed;
-      top: 50%;
-      left: 50%;
+      top: 40%;
+      left: 40%;
       length: 100px;
-      width: 250px;
-      align: center;
+      width: 270px;
       border-radius: 10px;
       border-color: #25d69b;
       background-color: #3a4f63;
@@ -31,13 +30,19 @@
       font-family: sans-serif;
       color: white;
     }
+    #startButton {
+      align: center;
+      font-family: sans-serif;
+      background-color: #4bbf16;
+      border-radius: 20px;
+      padding: 5px;
   </style>
 <body>
   <h1 id="title">EP:05:16</h1>
   <div id="firstTimeModal">
     <h2 class="firstTimeModalText">Welcome!</h2>
     <p class="firstTimeModalText">We are really glad you are using this app.</p>
-    <button onclick="closeWelcome()">Start</button>
+    <button id="startButton" onclick="closeWelcome()">Start</button>
   </div>
 </body>
 <script>

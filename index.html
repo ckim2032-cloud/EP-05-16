@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EP:05:16</title>
+</head>
+  <style>
+    #title {
+      left: 40%;
+      font-family: sans-serif;
+      color: white;
+    }
+    #firstTimeModal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      length: 100px;
+      width: 250px;
+      align: center;
+      border-radius: 10px;
+      border-color: #25d69b;
+      background-color: #3a4f63;
+      display: none;
+    }
+    .firstTimeModalText {
+      text-align: center;
+      font-family: sans-serif;
+      color: white;
+    }
+  </style>
+<body>
+  <h1 id="title">EP:05:16</h1>
+  <div id="firstTimeModal">
+    <h2 class="firstTimeModalText">Welcome!</h2>
+    <p class="firstTimeModalText">We are really glad you are using this app.</p>
+    <button onclick="closeWelcome()">Start</button>
+  </div>
+</body>
+<script>
+  if (!localStorage.getItem("hasVisited")) {
+    document.getElementById("firstTimeModal").style.display = "block";
+
+    localStorage.setItem("hasVisited", "true");
+  }
+
+  function closeWelcome() {
+    document.getElementById("firstTimeModal").style.display = "none";
+  }
+</script>
+</html>

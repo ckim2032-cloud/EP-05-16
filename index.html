@@ -85,13 +85,27 @@
 <script>
   const modal = document.getElementById("firstTimeModal");
   const overlay = document.getElementById("overlay");
-
-  modal.style.display = "block";
-  overlay.style.display = "block";
-
-  setTimeout(() => {
-  modal.classList.add("show");
-  overlay.classList.add("show");
-  }, 10);
+  
+  if (!localStorage.getItem("hasVisited")) {
+    modal.style.display = "block";
+    overlay.style.display = "block";
+  
+    setTimeout(() => {
+      modal.classList.add("show");
+      overlay.classList.add("show");
+    }, 10);
+  
+    localStorage.setItem("hasVisited", "true");
+  }
+  
+  function closeWelcome() {
+    modal.classList.remove("show");
+    overlay.classList.remove("show");
+  
+    setTimeout(() => {
+      modal.style.display = "none";
+      overlay.style.display = "none";
+    }, 300);
+  }
 </script>
 </html>

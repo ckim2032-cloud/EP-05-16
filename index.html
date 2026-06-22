@@ -108,9 +108,8 @@
 </body>
 <script>
   const progress = document.getElementById("shrinking-rect");
-  const elapsed = Date.now() - startTime; 
   const duration = 60000; // 60 seconds;
-  const percent = 1 - elapsed / duration;
+  let startTime;
   const modal = document.getElementById("firstTimeModal");
   const overlay = document.getElementById("overlay");
   if (!localStorage.getItem("hasVisited")) {
@@ -141,7 +140,7 @@
     requestAnimationFrame(update);
   }
   function startTimer() {
-    const startTime = Date.now();
+    startTime = Date.now();
     requestAnimationFrame(update);
   }
 </script>

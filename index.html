@@ -123,7 +123,9 @@
   
     localStorage.setItem("hasVisited", "true");
   }
-  
+  if (percent > 0) {
+    requestAnimationFrame(update);
+  }
   function closeWelcome() {
     modal.classList.remove("show");
     overlay.classList.remove("show");

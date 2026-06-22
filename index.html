@@ -123,9 +123,7 @@
   
     localStorage.setItem("hasVisited", "true");
   }
-  if (percent > 0) {
-    requestAnimationFrame(update);
-  }
+  
   function closeWelcome() {
     modal.classList.remove("show");
     overlay.classList.remove("show");
@@ -139,6 +137,9 @@
     const elapsed = Date.now() - startTime; 
     const percent = 1 - elapsed / duration;
     progress.style.width = (percent * 100) + "%";
+    requestAnimationFrame(update);
+  }
+  if (percent > 0) {
     requestAnimationFrame(update);
   }
   function startTimer() {

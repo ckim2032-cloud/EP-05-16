@@ -13,6 +13,7 @@
       left: 200px;
       font-family: Pliant, sans-serif;
       color: white;
+      text-align: center;
     }
     #firstTimeModal {
       position: fixed;
@@ -70,9 +71,26 @@
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
+  #nav-bar {
+    height: 15%;
+    background-color: #303b6b;
+    border-radius: 0px;
+  }
+  #shrinking-rect {
+    background-color: #62e95d;
+    height: 60px;
+    width: 250px;
+    left: 100px;
+  }
+  #bar-timer {
+    background-color: #767676;
+    border-radius: 5px;
+    left: 90px;
+    width: 280px;
+    height: 80px;
+  }
   </style>
 <body>
-  <h1 id="title">EP:05:16</h1>
   <div id="overlay"></div>
   <div id="firstTimeModal">
     <h2 class="firstTimeModalText">Welcome!</h2>
@@ -81,11 +99,20 @@
     <p class="firstTimeModalText">Press Start when you're ready.</p>
     <button id="startButton" onclick="closeWelcome()">Start</button>
   </div>
+  <div id="nav-bar">
+  </div>
+  <div id="bar-timer">
+    <div id="shrinking-rect"></div>
+  </div>
+  <button id="start-bar-timer" onclick="startTimer()">Start timer</button>
 </body>
 <script>
+  const progress = document.getElementById("shrinking-rect");
+  const elapsed = Date.now() - startTime; 
+  const duration = 60000; // 60 seconds;
+  const percent = 1 - elapsed / duration;
   const modal = document.getElementById("firstTimeModal");
   const overlay = document.getElementById("overlay");
-  
   if (!localStorage.getItem("hasVisited")) {
     modal.style.display = "block";
     overlay.style.display = "block";
@@ -106,6 +133,16 @@
       modal.style.display = "none";
       overlay.style.display = "none";
     }, 300);
+  }
+  function update() {
+    const elapsed = Date.now() - startTime; 
+    const percent = 1 - elapsed / duration;
+    progress.style.width = (percent * 100) + "%";
+    requestAnimationFrame(update);
+  }
+  function startTimer() {
+    const startTime = Date.now();
+    requestAnimationFrame(update);
   }
 </script>
 </html>
